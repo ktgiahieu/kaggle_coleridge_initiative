@@ -62,8 +62,8 @@ def eval_fn(data_loader, model, device):
             end_labels = d['end_labels']
             orig_start = d['orig_start']
             orig_end = d['orig_end']
-            orig_selected = d['orig_selected']
-            orig_tweet = d['orig_tweet']
+            orig_dataset_label = d['orig_dataset_label']
+            orig_text = d['orig_text']
             offsets = d['offsets']
 
             ids = ids.to(device, dtype=torch.long)
@@ -81,11 +81,11 @@ def eval_fn(data_loader, model, device):
             outputs_end = outputs_end.cpu().detach().numpy()
 
             jaccard_scores = []
-            for px, tweet in enumerate(orig_tweet):
-                selected_tweet = orig_selected[px]
+            for px, text in enumerate(orig_text):
+                selected_dataset_label = orig_dataset_label[px]
                 jaccard_score, _ = \
-                    utils.calculate_jaccard(original_tweet=tweet,
-                                            target_string=selected_tweet,
+                    utils.calculate_jaccard(original_text=text,
+                                            target_string=selected_dataset_label,
                                             start_logits=outputs_start[px, :],
                                             end_logits=outputs_end[px, :],
                                             orig_start=orig_start[px],

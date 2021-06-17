@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import transformers
@@ -17,10 +18,9 @@ def run(fold):
     df_train = dfx[dfx.kfold != fold].reset_index(drop=True)
     df_valid = dfx[dfx.kfold == fold].reset_index(drop=True)
 
-    train_dataset = dataset.TweetDataset(
-        tweets=df_train.text.values,
-        sentiments=df_train.sentiment.values,
-        selected_texts=df_train.selected_text.values)
+    train_dataset = dataset.ColeridgeDataset(
+        texts=df_train.text.values,
+        dataset_labels=df_train.dataset_label.values)
 
     train_data_loader = torch.utils.data.DataLoader(
         train_dataset,
@@ -28,10 +28,9 @@ def run(fold):
         num_workers=4,
         shuffle=True)
 
-    valid_dataset = dataset.TweetDataset(
-        tweets=df_valid.text.values,
-        sentiments=df_valid.sentiment.values,
-        selected_texts=df_valid.selected_text.values)
+    valid_dataset = dataset.ColeridgeDataset(
+        texts=df_valid.text.values,
+        dataset_labels=df_valid.dataset_label.values)
 
     valid_data_loader = torch.utils.data.DataLoader(
         valid_dataset,
@@ -43,7 +42,7 @@ def run(fold):
     model_config = transformers.RobertaConfig.from_pretrained(
         config.MODEL_CONFIG)
     model_config.output_hidden_states = True
-    model = models.TweetModel(conf=model_config)
+    model = models.ColeridgeModel(conf=model_config)
     model = model.to(device)
 
     num_train_steps = int(
@@ -78,6 +77,9 @@ def run(fold):
 
     if config.USE_SWA:
         optimizer.swap_swa_sgd()
+
+    if not os.path.isdir(f'{config.MODEL_SAVE_PATH}'):
+        os.makedirs(f'{config.MODEL_SAVE_PATH}')
 
     torch.save(model.state_dict(),
                f'{config.MODEL_SAVE_PATH}/model_{fold}.bin')

@@ -48,7 +48,7 @@ def get_best_start_end_idx(start_logits, end_logits,
     return best_idxs
 
 
-def calculate_jaccard(original_tweet, target_string,
+def calculate_jaccard(original_text, target_string,
                       start_logits, end_logits,
                       orig_start, orig_end,
                       offsets, 
@@ -59,13 +59,13 @@ def calculate_jaccard(original_tweet, target_string,
 
     filtered_output = ''
     for ix in range(start_idx, end_idx + 1):
-        filtered_output += original_tweet[offsets[ix][0]:offsets[ix][1]]
+        filtered_output += original_text[offsets[ix][0]:offsets[ix][1]]
         if (ix + 1) < len(offsets) and offsets[ix][1] < offsets[ix + 1][0]:
             filtered_output += ' '
 
     # Return orig tweet if it has less then 2 words
-    if len(original_tweet.split()) < 2:
-        filtered_output = original_tweet
+    if len(original_text.split()) < 2:
+        filtered_output = original_text
 
     if len(filtered_output.split()) == 1:
         filtered_output = filtered_output.replace('!!!!', '!')
