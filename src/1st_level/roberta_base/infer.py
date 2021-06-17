@@ -17,10 +17,10 @@ def run():
     df_test.loc[:, 'dataset_label'] = df_test.text.values
 
     #temporary fix
-    word_len =df_test.text.apply(lambda x:len(x.split()))
+    word_len =df_test.text.apply(lambda x:len(str(x).split()))
     df_test = df_test[word_len <= 94]
     tokenizer = config.TOKENIZER
-    word_len_tokenized = df_test.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(x.split())).ids)).to_numpy()
+    word_len_tokenized = df_test.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(str(x).split())).ids))
     df_test = df_test[word_len_tokenized <= 94]
 
     device = torch.device('cuda')
