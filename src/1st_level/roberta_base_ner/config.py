@@ -7,11 +7,11 @@ if is_kaggle:
     comp_name = 'coleridgeinitiative-show-us-the-data'
     my_restructured_dataset = 'my-coleridgeinitiative-show-us-the-data'
     my_impl_dataset = 'my-coleridge-initiative-impl'
-    my_model_dataset = 'my-roberta-base-squad2-qa-model'
+    my_model_dataset = 'my-roberta-base-squad2-ner-model'
 
     TOKENIZER_PATH = f'../input/{my_impl_dataset}/src/1st_level/roberta_tokenizer'
-    TRAINING_FILE = f'../input/{my_restructured_dataset}/data/train_folds.csv'
-    TEST_FILE = 'test.csv'
+    TRAINING_FILE = f'../input/{my_restructured_dataset}/data/train_folds.csv'#######
+    TEST_FILE = 'test.csv' #######
     SUB_FILE = f'../input/{comp_name}/sample_submission.csv'
     MODEL_SAVE_PATH = f'../input/{my_model_dataset}'
     TRAINED_MODEL_PATH = f'../input/{my_model_dataset}'
@@ -23,11 +23,11 @@ else: #colab
     drive_name = 'ColeridgeInitiative'
     
     TOKENIZER_PATH = f'/content/{repo_name}/src/1st_level/roberta_tokenizer'
-    TRAINING_FILE = f'/content/{repo_name}/data/train_folds.csv'
-    TEST_FILE = f'/content/{repo_name}/data/test.csv'
+    TRAINING_FILE = f'/content/{repo_name}/data/train_folds.csv'####### sua noi dung
+    TEST_FILE = f'/content/{repo_name}/data/test.csv'#######
     SUB_FILE = f'/content/{repo_name}/data/sample_submission.csv'
-    MODEL_SAVE_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/roberta_base_qa'
-    TRAINED_MODEL_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/roberta_base_qa'
+    MODEL_SAVE_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/roberta_base_ner'
+    TRAINED_MODEL_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/roberta_base_ner'
     INFERED_PICKLE_PATH = f'/content/{repo_name}/pickle'
 
     MODEL_CONFIG = 'deepset/roberta-base-squad2'
