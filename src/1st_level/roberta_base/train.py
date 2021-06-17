@@ -15,6 +15,10 @@ import utils
 def run(fold):
     dfx = pd.read_csv(config.TRAINING_FILE)
 
+    #temporary fix
+    word_len =dfx.text.apply(lambda x:len(x.split()))
+    dfx = dfx[word_len <= 510]
+
     df_train = dfx[dfx.kfold != fold].reset_index(drop=True)
     df_valid = dfx[dfx.kfold == fold].reset_index(drop=True)
 
