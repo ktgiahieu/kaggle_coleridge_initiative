@@ -6,8 +6,8 @@ is_kaggle = 'KAGGLE_URL_BASE' in os.environ
 if is_kaggle:
     comp_name = 'coleridgeinitiative-show-us-the-data'
     my_restructured_dataset = 'my-coleridgeinitiative-show-us-the-data'
-    my_impl_dataset = 'my-kaggle-coleridge-initiative-impl'
-    my_model_dataset = 'my-roberta-base-squad2'
+    my_impl_dataset = 'my-coleridge-initiative-impl'
+    my_model_dataset = 'my-roberta-base-squad2-qa-model'
 
     TOKENIZER_PATH = f'../input/{my_impl_dataset}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'../input/{my_restructured_dataset}/data/train_folds.csv'
