@@ -18,6 +18,10 @@ def run(fold):
     #temporary fix
     word_len =dfx.text.apply(lambda x:len(x.split()))
     dfx = dfx[word_len <= 510]
+    tokenizer = config.TOKENIZER
+    word_len_tokenized = dfx.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(x.split())).ids)).to_numpy()
+    dfx = dfx[word_len_tokenized <= 510]
+
 
     df_train = dfx[dfx.kfold != fold].reset_index(drop=True)
     df_valid = dfx[dfx.kfold == fold].reset_index(drop=True)

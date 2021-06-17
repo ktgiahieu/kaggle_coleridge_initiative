@@ -40,6 +40,9 @@ def process_data(text, dataset_label,
     tokenized_text = tokenizer.encode(text)
     # Vocab ids
     input_ids_original = tokenized_text.ids
+    print(f'Len text(by word): {len(text.split())}')
+    print(f'Len text(by char): {len(text)}')
+    print(f'Len input_ids_original: {len(input_ids_original)}')
     # Start and end char
     text_offsets = tokenized_text.offsets
 
