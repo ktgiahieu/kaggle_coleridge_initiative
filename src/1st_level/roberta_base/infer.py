@@ -16,6 +16,13 @@ def run():
     df_test = pd.read_csv(config.TEST_FILE)
     df_test.loc[:, 'dataset_label'] = df_test.text.values
 
+    #temporary fix
+    word_len =df_test.text.apply(lambda x:len(x.split()))
+    df_test = df_test[word_len <= 510]
+    tokenizer = config.TOKENIZER
+    word_len_tokenized = df_test.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(x.split())).ids)).to_numpy()
+    df_test = df_test[word_len_tokenized <= 510]
+
     device = torch.device('cuda')
     model_config = transformers.RobertaConfig.from_pretrained(
         config.MODEL_CONFIG)

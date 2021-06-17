@@ -20,13 +20,14 @@ if is_kaggle:
     MODEL_CONFIG = '../input/my-roberta-base-squad2'
 else: #colab
     repo_name = 'kaggle_coleridge_initiative'
+    drive_name = 'ColeridgeInitiative'
     
     TOKENIZER_PATH = f'/content/{repo_name}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'/content/{repo_name}/data/train_folds.csv'
     TEST_FILE = f'/content/{repo_name}/data/test.csv'
     SUB_FILE = f'/content/{repo_name}/data/sample_submission.csv'
-    MODEL_SAVE_PATH = f'/content/{repo_name}/model_save/roberta_base'
-    TRAINED_MODEL_PATH = f'/content/{repo_name}/model_save/roberta_base'
+    MODEL_SAVE_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save'
+    TRAINED_MODEL_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save'
     INFERED_PICKLE_PATH = f'/content/{repo_name}/pickle'
 
     MODEL_CONFIG = 'deepset/roberta-base-squad2'
@@ -34,13 +35,13 @@ else: #colab
 # Model params
 SEED = 25
 N_FOLDS = 5
-EPOCHS = 4
+EPOCHS = 1
 LEARNING_RATE = 4e-5
 PATIENCE = None
 EARLY_STOPPING_DELTA = None
 TRAIN_BATCH_SIZE = 16
 VALID_BATCH_SIZE = 16
-MAX_LEN = 512  # actually = inf
+MAX_LEN = 96 #512  # actually = inf
 print(f'{TOKENIZER_PATH}/vocab.json')
 TOKENIZER = tokenizers.ByteLevelBPETokenizer.from_file(
     vocab_filename=f'{TOKENIZER_PATH}/vocab.json',
