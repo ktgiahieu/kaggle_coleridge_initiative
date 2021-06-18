@@ -17,10 +17,10 @@ def run(fold):
 
     #temporary fix
     word_len =dfx.text.apply(lambda x:len(x.split()))
-    dfx = dfx[word_len <= 94]
+    dfx = dfx[word_len <= config.MAX_LEN - 2]
     tokenizer = config.TOKENIZER
     word_len_tokenized = dfx.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(x.split())).ids)).to_numpy()
-    dfx = dfx[word_len_tokenized <= 94]
+    dfx = dfx[word_len_tokenized <= config.MAX_LEN - 2]
 
 
     df_train = dfx[dfx.kfold != fold].reset_index(drop=True)
