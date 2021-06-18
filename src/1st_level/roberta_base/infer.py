@@ -18,10 +18,10 @@ def run():
 
     #temporary fix
     word_len =df_test.text.apply(lambda x:len(str(x).split()))
-    df_test = df_test[word_len <= 94]
+    df_test = df_test[word_len <= config.MAX_LEN - 2]
     tokenizer = config.TOKENIZER
     word_len_tokenized = df_test.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(str(x).split())).ids))
-    df_test = df_test[word_len_tokenized <= 94]
+    df_test = df_test[word_len_tokenized <= config.MAX_LEN - 2]
 
     device = torch.device('cuda')
     model_config = transformers.RobertaConfig.from_pretrained(
