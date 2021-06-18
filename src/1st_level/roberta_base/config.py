@@ -39,9 +39,9 @@ EPOCHS = 1
 LEARNING_RATE = 4e-5
 PATIENCE = None
 EARLY_STOPPING_DELTA = None
-TRAIN_BATCH_SIZE = 16
-VALID_BATCH_SIZE = 16
-MAX_LEN = 96 #512  # actually = inf
+TRAIN_BATCH_SIZE = 8
+VALID_BATCH_SIZE = 8
+MAX_LEN = 512  # actually = inf
 print(f'{TOKENIZER_PATH}/vocab.json')
 TOKENIZER = tokenizers.ByteLevelBPETokenizer.from_file(
     vocab_filename=f'{TOKENIZER_PATH}/vocab.json',
