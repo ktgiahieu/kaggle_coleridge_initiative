@@ -10,13 +10,13 @@ class ColeridgeModel(transformers.BertPreTrainedModel):
         self.roberta = transformers.RobertaModel.from_pretrained(
             config.MODEL_CONFIG,
             config=conf)
-        self.classifier = nn.Sequential(
-            nn.Dropout(dropout),
-            nn.Linear(config.HIDDEN_SIZE, 1),
+        self.classifier = torch.nn.Sequential(
+            torch.nn.Dropout(config.HIGH_DROPOUT),
+            torch.nn.Linear(config.HIDDEN_SIZE, 1),
         )
         
         for layer in self.classifier:
-            if isinstance(layer, nn.Linear):
+            if isinstance(layer, torch.nn.Linear):
                 layer.weight.data.normal_(mean=0.0, std=0.02)
                 if layer.bias is not None:
                     layer.bias.data.zero_()
