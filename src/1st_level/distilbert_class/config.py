@@ -43,7 +43,7 @@ PATIENCE = None
 EARLY_STOPPING_DELTA = None
 TRAIN_BATCH_SIZE = 32
 VALID_BATCH_SIZE = 32
-MAX_LEN = 512  # actually = 434
+MAX_LEN = 64  # actually = 434
 TOKENIZER = DistilBertTokenizerFast.from_pretrained(
     MODEL_CONFIG)
 HIDDEN_SIZE = 768
