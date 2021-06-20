@@ -23,7 +23,7 @@ def process_data(text, label,
         pad_to_max_length = True,
         return_attention_mask = True,   # Construct attn. masks.
         return_tensors = 'pt',     # Return pytorch tensors.
-        truncation = False,
+        truncation = True,
     )
     # ----------------------------------
 
