@@ -28,4 +28,4 @@ class ColeridgeModel(transformers.BertPreTrainedModel):
                                  token_type_ids=token_type_ids)
         out = out.last_hidden_state 
 
-        return self.classifier(hidden_states[:, 0, :].squeeze(1))
+        return self.classifier(out[:, 0, :].squeeze(1))
