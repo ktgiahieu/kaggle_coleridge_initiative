@@ -22,7 +22,6 @@ def train_fn(data_loader, model, optimizer, device, scheduler=None):
         labels = d['labels']
 
         ids = ids.to(device, dtype=torch.long)
-        token_type_ids = token_type_ids.to(device, dtype=torch.long)
         mask = mask.to(device, dtype=torch.long)
         labels = labels.to(device, dtype=torch.float)
 
@@ -53,7 +52,6 @@ def eval_fn(data_loader, model, device):
             labels = d['labels']
 
             ids = ids.to(device, dtype=torch.long)
-            token_type_ids = token_type_ids.to(device, dtype=torch.long)
             mask = mask.to(device, dtype=torch.long)
             labels = labels.to(device, dtype=torch.float)
 

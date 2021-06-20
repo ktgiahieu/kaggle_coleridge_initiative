@@ -14,17 +14,10 @@ import utils
 
 def run():
     df_test = pd.read_csv(config.TEST_FILE)
-    df_test.loc[:, 'dataset_label'] = df_test.text.values
-
-    #temporary fix
-    word_len =df_test.text.apply(lambda x:len(str(x).split()))
-    df_test = df_test[word_len <= config.MAX_LEN - 2]
-    tokenizer = config.TOKENIZER
-    word_len_tokenized = df_test.text.apply(lambda x:len(tokenizer.encode(' '+' '.join(str(x).split())).ids))
-    df_test = df_test[word_len_tokenized <= config.MAX_LEN - 2]
+    df_test.loc[:, 'label'] = 0
 
     device = torch.device('cuda')
-    model_config = transformers.RobertaConfig.from_pretrained(
+    model_config = transformers.DistilBertConfig.from_pretrained(
         config.MODEL_CONFIG)
     model_config.output_hidden_states = True
 
@@ -40,7 +33,7 @@ def run():
 
     test_dataset = dataset.ColeridgeDataset(
         texts=df_test.text.values,
-        dataset_labels=df_test.dataset_label.values)
+        labels=df_test.label.values)
 
     data_loader = torch.utils.data.DataLoader(
         test_dataset,
@@ -58,7 +51,6 @@ def run():
             labels = d['labels']
 
             ids = ids.to(device, dtype=torch.long)
-            token_type_ids = token_type_ids.to(device, dtype=torch.long)
             mask = mask.to(device, dtype=torch.long)
             labels = labels.to(device, dtype=torch.float)
 
