@@ -32,7 +32,7 @@ else: #colab
     INFERED_PICKLE_PATH = f'/content/{repo_name}/pickle'
 
     #MODEL_CONFIG = 'huawei-noah/TinyBERT_General_4L_312D'
-    MODEL_CONFIG = 'distilbert-base-cased '
+    MODEL_CONFIG = 'distilbert-base-cased'
 
 # Model params
 SEED = 25
@@ -43,7 +43,7 @@ PATIENCE = None
 EARLY_STOPPING_DELTA = None
 TRAIN_BATCH_SIZE = 32
 VALID_BATCH_SIZE = 32
-MAX_LEN = 30  # actually = inf
+MAX_LEN = 512  # actually = 434
 TOKENIZER = DistilBertTokenizerFast.from_pretrained(
     MODEL_CONFIG)
 HIDDEN_SIZE = 768
