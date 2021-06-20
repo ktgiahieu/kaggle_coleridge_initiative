@@ -90,4 +90,4 @@ def run():
 
 if __name__ == '__main__':
     utils.seed_everything(seed=config.SEED)
-	run()
+    run()
