@@ -90,11 +90,4 @@ def run():
 
 if __name__ == '__main__':
     utils.seed_everything(seed=config.SEED)
-	
 	run()
-
-    #print('\nScores without SWA:')
-    #for i in range(config.N_FOLDS):
-    #    print(f'Fold={i}, Jaccard = {fold_scores[i]}')
-    #print(f'Mean = {np.mean(fold_scores)}')
-    #print(f'Std = {np.std(fold_scores)}')
