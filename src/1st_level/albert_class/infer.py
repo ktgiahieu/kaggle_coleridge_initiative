@@ -17,7 +17,7 @@ def run():
     df_test.loc[:, 'label'] = 0
 
     device = torch.device('cuda')
-    model_config = transformers.DistilBertConfig.from_pretrained(
+    model_config = transformers.AlbertConfig.from_pretrained(
         config.MODEL_CONFIG)
     model_config.output_hidden_states = True
 
@@ -71,7 +71,7 @@ def run():
     if not os.path.isdir(f'{config.INFERED_PICKLE_PATH}'):
         os.makedirs(f'{config.INFERED_PICKLE_PATH}')
 
-    with open(f'{config.INFERED_PICKLE_PATH}/distilbert-predicted_labels.pkl', 'wb') as handle:
+    with open(f'{config.INFERED_PICKLE_PATH}/albert-predicted_labels.pkl', 'wb') as handle:
         pickle.dump(predicted_labels, handle)
     # with open(f'{config.INFERED_PICKLE_PATH}/roberta-char_pred_test_start.pkl', 'wb') as handle:
     #     pickle.dump(char_pred_test_start, handle)
