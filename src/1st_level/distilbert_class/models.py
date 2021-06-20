@@ -24,7 +24,6 @@ class ColeridgeModel(transformers.BertPreTrainedModel):
     def forward(self, ids, mask):
         # sequence_output of N_LAST_HIDDEN + Embedding states
         # (N_LAST_HIDDEN + 1, batch_size, num_tokens, 768)
-        print(ids.shape)
         out = self.distilbert(ids, attention_mask=mask)
         out = out.last_hidden_state 
 
