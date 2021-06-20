@@ -5,8 +5,8 @@ import tqdm
 import utils
 
 
-def loss_fn(outputs, labels):
-    loss_fct = torch.nn.BCEWithLogitsLoss(weight=9.9)
+def loss_fn(outputs, labels, weight):
+    loss_fct = torch.nn.BCEWithLogitsLoss(weight=weight)
     return loss_fct(outputs, labels)
 
 
@@ -30,7 +30,9 @@ def train_fn(data_loader, model, optimizer, device, scheduler=None):
         model.zero_grad()
         outputs = \
             model(ids=ids, mask=mask, token_type_ids=token_type_ids)
-        loss = loss_fn(outputs, labels)
+        
+        weight = torch.Tensor([10]).to(device, dtype=torch.float)
+        loss = loss_fn(outputs, labels ,weight)
         loss.backward()
         optimizer.step()
         scheduler.step()
