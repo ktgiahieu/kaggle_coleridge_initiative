@@ -84,8 +84,8 @@ def run(fold):
     torch.save(model.state_dict(),
                f'{config.MODEL_SAVE_PATH}/model_{fold}.bin')
 
-    #return jaccard
-	return 0
+    # return jaccard
+    return 0
 
 
 if __name__ == '__main__':

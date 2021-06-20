@@ -31,7 +31,7 @@ else: #colab
     INFERED_PICKLE_PATH = f'/content/{repo_name}/pickle'
 
     #MODEL_CONFIG = 'huawei-noah/TinyBERT_General_4L_312D'
-	MODEL_CONFIG = 'distilroberta-base'
+    MODEL_CONFIG = 'distilroberta-base'
 
 # Model params
 SEED = 25

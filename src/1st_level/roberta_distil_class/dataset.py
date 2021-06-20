@@ -42,7 +42,7 @@ def process_data(text, label,
     return {'ids': input_ids,
             'mask': mask,
             'token_type_ids': token_type_ids,
-            'labels', label}
+            'labels': label}
 
 
 class ColeridgeDataset:

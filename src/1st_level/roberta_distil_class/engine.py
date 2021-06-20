@@ -6,7 +6,6 @@ import utils
 
 
 def loss_fn(outputs, labels):
-9.17857
     loss_fct = torch.nn.BCEWithLogitsLoss(weight=9.9)
     return loss_fct(outputs, labels)
 
@@ -63,27 +62,4 @@ def eval_fn(data_loader, model, device):
             loss = loss_fn(outputs, labels)
 
             outputs = outputs.cpu().detach().numpy()
-			"""
-            jaccard_scores = []
-            for px, text in enumerate(orig_text):
-                selected_dataset_label = orig_dataset_label[px]
-                jaccard_score, _ = \
-                    utils.calculate_jaccard(original_text=text,
-                                            target_string=selected_dataset_label,
-                                            start_logits=outputs_start[px, :],
-                                            end_logits=outputs_end[px, :],
-                                            orig_start=orig_start[px],
-                                            orig_end=orig_end[px],
-                                            offsets=offsets[px])
-                jaccard_scores.append(jaccard_score)
-
-            jaccards.update(np.mean(jaccard_scores), ids.size(0))
-            losses.update(loss.item(), ids.size(0))
-            tk0.set_postfix(loss=losses.avg, jaccard=jaccards.avg)
-
-
-    print(f'Jaccard = {jaccards.avg}')
-
-    return jaccards.avg
-	"""
-	return 0
+    return 0
