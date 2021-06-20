@@ -55,8 +55,12 @@ def run():
                 model(ids=ids, mask=mask)
 
             outputs = outputs.cpu().detach().numpy()
+			#outputs = torch.sigmoid(outputs)
             for o in outputs:
-				predicted_labels.append(o > 0.5)
+				predicted_labels.append(o)
+				print(o)
+				break
+				
 
     if not os.path.isdir(f'{config.INFERED_PICKLE_PATH}'):
         os.makedirs(f'{config.INFERED_PICKLE_PATH}')
