@@ -47,13 +47,13 @@ def run():
         shuffle=False,
         batch_size=config.VALID_BATCH_SIZE,
         num_workers=4)
-
-	predicted_labels = []
+    
+    predicted_labels = []
 
     with torch.no_grad():
         tk0 = tqdm.tqdm(data_loader, total=len(data_loader))
         for bi, d in enumerate(tk0):
-                        ids = d['ids']
+            ids = d['ids']
             token_type_ids = d['token_type_ids']
             mask = d['mask']
             labels = d['labels']
@@ -66,16 +66,16 @@ def run():
 
             outputs_folds = []
             for i in range(config.N_FOLDS):
-				outputs = \
-					model(ids=ids, mask=mask, token_type_ids=token_type_ids)
+                outputs = \
+                  model(ids=ids, mask=mask, token_type_ids=token_type_ids)
 
                 outputs_folds.append(outputs)
 
             outputs = sum(outputs_folds) / config.N_FOLDS
 
             outputs = outputs.cpu().detach().numpy()
-			for o in outputs:
-				predicted_labels.append(o > 0.5)
+            for o in outputs:
+              predicted_labels.append(o > 0.5)
 
     if not os.path.isdir(f'{config.INFERED_PICKLE_PATH}'):
         os.makedirs(f'{config.INFERED_PICKLE_PATH}')
