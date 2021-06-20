@@ -54,7 +54,6 @@ def run():
         tk0 = tqdm.tqdm(data_loader, total=len(data_loader))
         for bi, d in enumerate(tk0):
             ids = d['ids']
-            token_type_ids = d['token_type_ids']
             mask = d['mask']
             labels = d['labels']
 
@@ -67,7 +66,7 @@ def run():
             outputs_folds = []
             for i in range(config.N_FOLDS):
                 outputs = \
-                  model(ids=ids, mask=mask, token_type_ids=token_type_ids)
+                  model(ids=ids, mask=mask)
 
                 outputs_folds.append(outputs)
 
