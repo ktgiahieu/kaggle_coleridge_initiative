@@ -6,19 +6,19 @@ is_kaggle = 'KAGGLE_URL_BASE' in os.environ
 # Paths
 if is_kaggle:
     comp_name = 'coleridgeinitiative-show-us-the-data'
-    my_restructured_dataset = 'my-coleridgeinitiative-show-us-the-data'
+    my_restructured_dataset = 'coleridge-classify-train-folds'
     my_impl_dataset = 'my-coleridge-initiative-impl'
-    my_model_dataset = 'my-roberta-base-squad2-qa-model'
+    my_model_dataset = 'my-distilber-class-model'
 
     TOKENIZER_PATH = f'../input/{my_impl_dataset}/src/1st_level/roberta_tokenizer'
-    TRAINING_FILE = f'../input/{my_restructured_dataset}/data/train_folds.csv'
+    TRAINING_FILE = f'../input/{my_restructured_dataset}/train_folds.csv'
     TEST_FILE = 'test.csv'
     SUB_FILE = f'../input/{comp_name}/sample_submission.csv'
-    MODEL_SAVE_PATH = f'../input/{my_model_dataset}'
+    MODEL_SAVE_PATH = f'./'
     TRAINED_MODEL_PATH = f'../input/{my_model_dataset}'
     INFERED_PICKLE_PATH = '.'
 
-    MODEL_CONFIG = '../input/my-roberta-base-squad2'
+    MODEL_CONFIG = 'distilbert-base-cased'
 else: #colab
     repo_name = 'kaggle_coleridge_initiative'
     drive_name = 'ColeridgeInitiative'
