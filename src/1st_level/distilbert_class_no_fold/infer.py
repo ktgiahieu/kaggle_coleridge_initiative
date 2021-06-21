@@ -13,7 +13,7 @@ import utils
 
 
 def run():
-    df_test = pd.read_csv(config.TEST_FILE)
+    df_test = pd.read_csv(config.TRAINING_FILE)
     df_test.loc[:, 'label'] = 0
 
     device = torch.device('cuda')
@@ -36,7 +36,7 @@ def run():
         test_dataset,
         shuffle=False,
         batch_size=config.VALID_BATCH_SIZE,
-        num_workers=4)
+        num_workers=2)
     
     predicted_labels = []
 
@@ -55,11 +55,9 @@ def run():
                 model(ids=ids, mask=mask)
 
             outputs = outputs.cpu().detach().numpy()
-			#outputs = torch.sigmoid(outputs)
-            for o in outputs:
-				predicted_labels.append(o)
-				print(o)
-				break
+			      #outputs = torch.sigmoid(outputs)
+            predicted_labels.extend((outputs>0).squeeze(-1).tolist())
+            print(len(predicted_labels))
 				
 
     if not os.path.isdir(f'{config.INFERED_PICKLE_PATH}'):
