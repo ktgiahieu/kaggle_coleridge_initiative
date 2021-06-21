@@ -18,7 +18,7 @@ if is_kaggle:
     TRAINED_MODEL_PATH = f'../input/{my_model_dataset}'
     INFERED_PICKLE_PATH = '.'
 
-    MODEL_CONFIG = 'distilbert-base-cased'
+    MODEL_CONFIG = '../input/my-distilbert-base-cased-fast'
 else: #colab
     repo_name = 'kaggle_coleridge_initiative'
     drive_name = 'ColeridgeInitiative'
