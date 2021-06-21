@@ -28,9 +28,9 @@ def process_data(text, label,
     # ----------------------------------
 
     # Input for BERT
-    input_ids = np.squeeze(encoded_dict['input_ids'],0)
+    input_ids = encoded_dict['input_ids'][0].tolist()
     # Mask of input without padding
-    mask = np.squeeze(encoded_dict['attention_mask'],0)
+    mask = encoded_dict['attention_mask'][0].tolist()
 
     return {'ids': input_ids,
             'mask': mask,
