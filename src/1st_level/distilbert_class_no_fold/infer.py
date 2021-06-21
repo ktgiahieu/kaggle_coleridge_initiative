@@ -57,8 +57,7 @@ def run():
             outputs = outputs.cpu().detach().numpy()
 			      #outputs = torch.sigmoid(outputs)
             predicted_labels.extend((outputs>0).squeeze(-1).tolist())
-            print(len(predicted_labels))
-				
+
 
     if not os.path.isdir(f'{config.INFERED_PICKLE_PATH}'):
         os.makedirs(f'{config.INFERED_PICKLE_PATH}')
