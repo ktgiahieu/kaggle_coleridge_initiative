@@ -8,11 +8,11 @@ if is_kaggle:
     comp_name = 'coleridgeinitiative-show-us-the-data'
     my_restructured_dataset = 'coleridge-classify-train-folds'
     my_impl_dataset = 'my-coleridge-initiative-impl'
-    my_model_dataset = 'my-distilber-class-model'
+    my_model_dataset = 'my-distilbert-class-model'
 
     TOKENIZER_PATH = f'../input/{my_impl_dataset}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'../input/{my_restructured_dataset}/train_folds.csv'
-    TEST_FILE = 'test.csv'
+    TEST_FILE = 'test_all_data.csv'
     SUB_FILE = f'../input/{comp_name}/sample_submission.csv'
     MODEL_SAVE_PATH = f'./'
     TRAINED_MODEL_PATH = f'../input/{my_model_dataset}'
@@ -25,7 +25,7 @@ else: #colab
     
     #TOKENIZER_PATH = f'/content/{repo_name}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'/content/{repo_name}/data/train_folds.csv'
-    TEST_FILE = f'/content/{repo_name}/data/test.csv'
+    TEST_FILE = f'/content/{repo_name}/data/train_all_data.csv'
     SUB_FILE = f'/content/{repo_name}/data/sample_submission.csv'
     MODEL_SAVE_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/distilbert_class'
     TRAINED_MODEL_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/distilbert_class'

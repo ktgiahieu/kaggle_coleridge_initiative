@@ -13,7 +13,7 @@ import utils
 
 
 def run():
-    df_test = pd.read_csv(config.TRAINING_FILE)
+    df_test = pd.read_csv(config.TEST_FILE)
     df_test.loc[:, 'label'] = 0
 
     device = torch.device('cuda')
