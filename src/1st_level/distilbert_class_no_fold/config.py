@@ -8,7 +8,7 @@ if is_kaggle:
     comp_name = 'coleridgeinitiative-show-us-the-data'
     my_restructured_dataset = 'coleridge-classify-train-folds'
     my_impl_dataset = 'my-coleridge-initiative-impl'
-    my_model_dataset = 'my-distilbert-class-model'
+    my_model_dataset = 'my-distilbert-class-noise-model'
 
     TOKENIZER_PATH = f'../input/{my_impl_dataset}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'../input/{my_restructured_dataset}/train_folds.csv'
