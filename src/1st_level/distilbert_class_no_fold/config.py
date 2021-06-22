@@ -25,7 +25,7 @@ else: #colab
     
     #TOKENIZER_PATH = f'/content/{repo_name}/src/1st_level/roberta_tokenizer'
     TRAINING_FILE = f'/content/{repo_name}/data/train_folds.csv'
-    TEST_FILE = f'/content/{repo_name}/data/train_all_data.csv'
+    TEST_FILE = f'test_all_data.csv'
     SUB_FILE = f'/content/{repo_name}/data/sample_submission.csv'
     MODEL_SAVE_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/distilbert_class'
     TRAINED_MODEL_PATH = f'/content/gdrive/MyDrive/Dataset/{drive_name}/model_save/1st_level/distilbert_class'
